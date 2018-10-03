@@ -1,10 +1,7 @@
 //lets connect to the Star Wars API and get their random character right when the page loads
 $(document).ready(function(){
     var randCharURL = "https://swapi.co/api/people/" + Math.floor(Math.random() * 47 + 1) + "/.json"; //there are 87 but only the first ones are cool
-    var planetURL = "";
-    var randShipURL = "";
-    
-    
+
     $.ajax({
         url : randCharURL,
         dataType : "json",
@@ -30,6 +27,34 @@ $(document).ready(function(){
             var charInfo = "Birth Year: " + birth_year + "<br>Eye Color: " + capitalize(eye_color) + "<br>Hair Color: " + capitalize(hair_color) + 
                 "<br>Gender: " + capitalize(gender) + "<br>Height: " + convertCentToFeetAndInch(height) + " <br>Weight: " + convertKgsToLbs(mass) + "lbs<br>Skin Color: " + capitalize(skin_color);
             $("#charInfo").html(charInfo);
+            
+            if(planetURL != ""){
+                //make a call to get the planet information!
+                $.ajax({
+                    url : planetURL,
+                    dataType : "json",
+                    success : function(parsedJson){
+                        
+                        
+                        var planetName = parsedJson["name"];// string -- The name of this planet.
+                        var diameter = parsedJson["diameter"];// string -- The diameter of this planet in kilometers.
+                        var rotation_period = parsedJson["rotation_period"];// string -- The number of standard hours it takes for this planet to complete a single rotation on its axis.
+                        var orbital_period = parsedJson["orbital_period"];// string -- The number of standard days it takes for this planet to complete a single orbit of its local star.
+                        var gravity = parsedJson["gravity"];// string -- A number denoting the gravity of this planet, where "1" is normal or 1 standard G. "2" is twice or 2 standard Gs. "0.5" is half or 0.5 standard Gs.
+                        var population = parsedJson["population"];// string -- The average population of sentient beings inhabiting this planet.
+                        var climate = parsedJson["climate"];// string -- The climate of this planet. Comma separated if diverse.
+                        var terrain = parsedJson["terrain"];// string -- The terrain of this planet. Comma separated if diverse.
+                        var surface_water = parsedJson["surface_water"];// string -- The percentage of the planet surface that is naturally occurring water or bodies of water.
+                        
+                        $("#planetName").html(planetName);
+                        
+                        var planetInfo = "Diameter: " + diameter + " kilometers<br>Rotation Period: " + rotation_period + " hrs<br>Orbital Period: " 
+                        + orbital_period + 
+                            " days<br>Gravity: " + gravity + " Gs<br>Population: " + population + " people<br>Climate: " + capitalize(climate) + "<br>Terrain: " + capitalize(terrain) + "<br>Surface Water: " + surface_water + "%";
+                        $("#planetInfo").html(planetInfo);
+                    }
+                });
+            }
             
             
         }
