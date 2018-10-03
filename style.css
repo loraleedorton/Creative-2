@@ -1,52 +1,77 @@
 body {
     font-family: Arial;
-    background-image:url("https://images.alphacoders.com/107/thumb-1920-107763.jpg");
-    background-color:black;
-    background-size:cover;
-    background-position:center right;
+    background-image: url("https://images.alphacoders.com/107/thumb-1920-107763.jpg");
+    background-color: black;
+    background-size: cover;
+    background-position: center right;
     background-attachment: fixed;
-    color:white;
+    background-repeat: no-repeat;
+    color: white;
 }
 
 #title {
-    width:55%;
-    float:left;
-    clear:both;
-    text-align:center;
-    font-size:150%;
-    padding:0px;
+    width: 55%;
+    float: left;
+    clear: both;
+    text-align: center;
+    font-size: 150%;
+    padding: 0px;
 }
 
 h1 {
     margin-left: auto;
     margin-right: auto;
-    clear:both;
+    clear: both;
 }
 
 #titlePic {
-    width:55%;
-    clear:both;
+    width: 55%;
+    clear: both;
     margin: auto;
-    padding:0px;
+    padding: 0px;
 }
 
 h2 {
-    width:55%;
-    float:left;
-    clear:both;
+    width: 55%;
+    float: left;
+    clear: both;
     text-align: center;
-    font-size:370%;
+    font-size: 370%;
     padding: 7px;
-    color:yellow;
+    color: yellow;
 }
 
 h3 {
-    width:55%;
-    float:left;
-    clear:both;
+    width: 55%;
+    float: left;
+    clear: both;
     text-align: center;
-    font-size:170%;
+    font-size: 170%;
     line-height: 1.2;
     padding: 7px 7px 7px 7px;
     margin: 0px 5px 10px 5px;
+}
+
+@media (max-width: 600px) {
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    body {
+        padding: 0px;
+        background-size: 1100px;
+    }
+
+    #title {
+        width: 100%;
+    }
+
+    h2 {
+        width: 100%;
+    }
+
+    h3 {
+        width: 100%;
+    }
 }
